@@ -1,0 +1,25 @@
+[Unit]
+Description=RClone Gdrive Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+Environment=RCLONE_CONFIG=/opt/rclone/rclone.conf
+Environment=GDRIVE=/mnt/gdrive
+
+ExecStart=/usr/bin/rclone mount gdrive: $GDRIVE \
+--allow-other \
+--allow-non-empty \
+--dir-cache-time 24h \
+--drive-chunk-size 32M \
+--log-level INFO \
+--umask 002 \
+--rc
+ExecStop=/bin/fusermount -uz $GDRIVE
+Restart=on-failure
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

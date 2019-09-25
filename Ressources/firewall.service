@@ -1,0 +1,13 @@
+[Unit]
+Description=Firewall rules
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/script/firewall.sh
+Restart=on-failure
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
