@@ -13,6 +13,13 @@
 ### Sofware
 * [Rasbian](https://www.raspberrypi.org/downloads/raspbian/) - for this tutorial I download the `Raspbian Buster Lite`
 
+## Scan network
+Run the command:
+```sh
+sudo iwlist wlan0 scan
+```
+where `wlan0` is the interface for the WiFi
+
 ## Connect to WiFi
 Edit the file `/etc/wpa_supplicant/wpa_supplicant.conf`
 ```sh
